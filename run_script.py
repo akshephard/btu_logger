@@ -1,4 +1,3 @@
-from get_modbus import Get_Modbus_Data
 from local_db import Influx_Database_class
 from modbus_driver import Modbus_Driver
 import time
