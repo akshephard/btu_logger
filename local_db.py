@@ -7,6 +7,9 @@ import datetime
 from influxdb import InfluxDBClient
 from Influx_Dataframe_Client import Influx_Dataframe_Client
 import time
+import yaml
+
+# TODO CONVERT TO YAML
 
 # @author : Marco Pritoni <mpritoni@lbl.gov>
 # @author : Anand Prakash <akprakash@lbl.gov>
@@ -20,31 +23,38 @@ class Influx_Database_class(object):
 
     def __init__(self, config_type="local"):
 
-        Config = configparser.ConfigParser()
-        Config.read("config_template.ini")
 
         try:
-            self.ip = Config.get("modbus", "ip")
             if config_type == "local":
                 db_config_name = "local_database_config"
-                db_config = Config["local_database_config"]
+                #db_config = Config["local_database_config"]
             else:
                 db_config_name = "remote_database_config"
-                db_config = Config["remote_database_config"]
+                #db_config = Config["remote_database_config"]
 
-            self.host = db_config.get("host")
-            self.port = db_config.get("port")
-            self.database_name = db_config.get("database")
-            self.influx_obj=Influx_Dataframe_Client(config_file="config_template.ini", db_section=db_config_name)
+
+            self.influx_obj=Influx_Dataframe_Client(config_file="config_template.yaml", db_section=db_config_name)
             self.client=self.influx_obj.expose_influx_client()
-            self.measurement_name = db_config.get("measurement_name")
-            self.sensor_id = db_config.get("sensor_id")
-            self.tag_names = db_config.get("tags").split(",")
-            self.tag_values = [db_config.get(self.tag_names[i]) for i in range(len(self.tag_names))]
-            self.field_names = db_config.get("fields").split(",")
+
         except Exception as e:
             # self.logger.error("unexpected error while setting configuration from config_file=%s, error=%s"%(self.config_file, str(e)))
             raise e
+
+        db_section = db_config_name
+        with open('config_template.yaml') as f:
+            # use safe_load instead load
+            dbConfig = yaml.safe_load(f)
+
+
+
+
+        self.measurement_name = dbConfig[db_section]['measurement_name']
+        self.tag_names = dbConfig[db_section]['tag_list']
+        self.tag_values = dbConfig[db_section]['tag_values']
+        self.database_name = dbConfig[db_section]['database']
+        self.field_names = dbConfig[db_section]['fields']
+
+
 
     def push_json_to_db(self, data):
         tags = {}

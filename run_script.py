@@ -2,7 +2,7 @@ from local_db import Influx_Database_class
 from modbus_driver import Modbus_Driver
 import time
 
-obj = Modbus_Driver('config.yaml')
+obj = Modbus_Driver('config_template.yaml')
 obj.initialize_modbus()
 
 local_db = Influx_Database_class(config_type="local")

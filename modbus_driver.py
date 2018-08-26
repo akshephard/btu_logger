@@ -59,48 +59,49 @@ import yaml
 # configure the client logging
 #---------------------------------------------------------------------------#
 import logging
-'''
-logging.basicConfig()
-log = logging.getLogger()
-log.setLevel(logging.DEBUG)
-'''
+
+#logging.basicConfig()
+#log = logging.getLogger()
+#log.setLevel(logging.DEBUG)
+
 
 class Modbus_Driver(object):
     def __init__(self, config_file, config_section=None):
+        if (config_section==None):
+            modbus_section = 'modbus'
         with open(config_file) as f:
             # use safe_load instead load
             modbusConfig = yaml.safe_load(f)
 
-        self.MODBUS_TYPE = modbusConfig['modbus']['modbus_type']
+        self.MODBUS_TYPE = modbusConfig[modbus_section]['modbus_type']
         if self.MODBUS_TYPE == 'serial':
             print('serial')
-            self.METHOD = modbusConfig['modbus']['method']
-            self.SERIAL_PORT = modbusConfig['modbus']['port']
-            self.STOPBITS = modbusConfig['modbus']['stopbits']
-            self.BYTESIZE = modbusConfig['modbus']['bytesize']
-            self.PARITY = modbusConfig['modbus']['parity']
-            self.BAUDRATE = modbusConfig['modbus']['baudrate']
+            self.METHOD = modbusConfig[modbus_section]['method']
+            self.SERIAL_PORT = modbusConfig[modbus_section]['port']
+            self.STOPBITS = modbusConfig[modbus_section]['stopbits']
+            self.BYTESIZE = modbusConfig[modbus_section]['bytesize']
+            self.PARITY = modbusConfig[modbus_section]['parity']
+            self.BAUDRATE = modbusConfig[modbus_section]['baudrate']
         elif self.MODBUS_TYPE == 'tcp':
-            self.IP_ADDRESS = modbusConfig['modbus']['ip']
+            self.IP_ADDRESS = modbusConfig[modbus_section]['ip']
         else:
             print("Invalid modbus type")
             exit()
 
-        self.UNIT_ID = modbusConfig['modbus']['UNIT_ID']
-        self.OFFSET_REGISTERS = modbusConfig['modbus']['OFFSET_REGISTERS']
+        self.UNIT_ID = modbusConfig[modbus_section]['UNIT_ID']
+        self.OFFSET_REGISTERS = modbusConfig[modbus_section]['OFFSET_REGISTERS']
 
-
-        if modbusConfig['modbus']['byte_order'] == 'big':
+        if modbusConfig[modbus_section]['byte_order'] == 'big':
             self.BYTE_ORDER = Endian.Big
-        elif modbusConfig['modbus']['byte_order'] == 'little':
+        elif modbusConfig[modbus_section]['byte_order'] == 'little':
             self.BYTE_ORDER = Endian.Little
         else:
             print("invalid byte order") # change to except later
             exit()
-        if modbusConfig['modbus']['word_order'] == 'big':
+        if modbusConfig[modbus_section]['word_order'] == 'big':
             print("big")
             self.WORD_ORDER = Endian.Big
-        elif modbusConfig['modbus']['word_order'] == 'little':
+        elif modbusConfig[modbus_section]['word_order'] == 'little':
             self.WORD_ORDER = Endian.Little
         else:
             print("invalid byte order") # change to except later
@@ -108,10 +109,9 @@ class Modbus_Driver(object):
 
 
 
-        self.register_dict = modbusConfig['modbus']['registers']
+        self.register_dict = modbusConfig[modbus_section]['registers']
         for key in self.register_dict:
             self.register_dict[key][0] -= self.OFFSET_REGISTERS
-
 
 
     def initialize_modbus(self):
@@ -129,6 +129,8 @@ class Modbus_Driver(object):
         return response
 
     def read_register_raw(self,register,length):
+        #print(register)
+        #print(length)
         response = self.client.read_holding_registers(register,length,unit= self.UNIT_ID)
         return response
 
@@ -222,8 +224,6 @@ class Modbus_Driver(object):
 
         for key in self.register_dict:
             #print(self.register_dict[key][0])
-            print(key)
-            print(self.register_dict[key][0])
             output[key] = self.decode_register(self.register_dict[key][0],self.register_dict[key][1])
 
         return output
