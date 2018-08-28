@@ -69,6 +69,23 @@ class Influx_Database_class(object):
                         "fields": fields
                     }
                 ]
+        print(pushData)
+        self.influx_obj.write_json(json=pushData, database=self.database_name)
+
+    def successful_push(self):
+        tags = {}
+        #tags.append("127.0.0.1")
+        #tags.update({'ip':"127.0.0.1"})
+
+        pushData = [
+                    {
+                        "measurement": "Push_to_remote",
+                        "tags": {},
+                        "fields": {"success": 1}
+                    }
+                ]
+        print(self.database_name)
+        print(pushData)
         self.influx_obj.write_json(json=pushData, database=self.database_name)
 
     def push_df_to_db(self, df):

@@ -60,9 +60,9 @@ import yaml
 #---------------------------------------------------------------------------#
 import logging
 
-#logging.basicConfig()
-#log = logging.getLogger()
-#log.setLevel(logging.DEBUG)
+logging.basicConfig()
+log = logging.getLogger()
+log.setLevel(logging.DEBUG)
 
 
 class Modbus_Driver(object):
@@ -84,6 +84,7 @@ class Modbus_Driver(object):
             self.BAUDRATE = modbusConfig[modbus_section]['baudrate']
         elif self.MODBUS_TYPE == 'tcp':
             self.IP_ADDRESS = modbusConfig[modbus_section]['ip']
+            self.PORT = modbusConfig[modbus_section]['port']
         else:
             print("Invalid modbus type")
             exit()
@@ -120,7 +121,7 @@ class Modbus_Driver(object):
             connection = self.client.connect()
 
         if self.MODBUS_TYPE == 'tcp':
-            self.client = ModbusTcpClient(self.IP_ADDRESS)
+            self.client = ModbusTcpClient(self.IP_ADDRESS,port=self.PORT)
 
 
 
@@ -129,8 +130,8 @@ class Modbus_Driver(object):
         return response
 
     def read_register_raw(self,register,length):
-        #print(register)
-        #print(length)
+        print(register)
+        print(length)
         response = self.client.read_holding_registers(register,length,unit= self.UNIT_ID)
         return response
 
@@ -215,6 +216,9 @@ class Modbus_Driver(object):
                     byteorder=self.BYTE_ORDER,
                     wordorder=self.WORD_ORDER)
             output = decoder.decode_64bit_float()
+        else:
+            print("Wrong type specified")
+            exit()
 
         return output
 

@@ -1,22 +1,24 @@
 modbus:
     modbus_type: tcp
     method: rtu
-    port: /dev/ttyS4
+    port: 5020
     stopbits: 1
     bytesize: 8
     parity: E
     baudrate: 19200
     ip: 127.0.0.1
     OFFSET_REGISTERS: 0
-    UNIT_ID: 0x1
-    byte_order: big
+    UNIT_ID: 0x0
+    byte_order: little
     word_order: little
-    registers: {signal_strength:[200,32int],flow_rate:[202,32int],net_total:[204,32int],positive_totalizer:[206,32int],negative_totalizer:[208,32int]}
+    #registers: {signal_strength:[200,32int],flow_rate:[202,32int],net_total:[204,32int],positive_totalizer:[206,32int],negative_totalizer:[208,32int]}
     #registers: {signal_strength:[200,32int],flow_rate:[202,32int],net_total:[204,32int],positive_totalizer:[206,32int],negative_totalizer:[208,32int],temp1:[210,32int]}
+    registers: {signal_strength:[0,32float],flow_rate:[2,32float],net_total:[4,32float],positive_totalizer:[6,32float],negative_totalizer:[8,32float],temp1:[10,32float]}
+
 
 local_database_config:
     host: localhost
-    database: local_btu
+    database: local_btu_test
     protocol: json
     port: 8086
     use_ssl: False
@@ -34,7 +36,7 @@ local_database_config:
 
 remote_database_config:
     host: localhost
-    database: remote_btu
+    database: remote_btu_test
     protocol: json
     port: 8086
     use_ssl: False
