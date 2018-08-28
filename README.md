@@ -14,6 +14,10 @@ instance of influxDB.
 # run_script.py
 This python script runs a loop that pulls information from the modbus device and puts it into 
 the local database and remote database. Use this file to quickly test if everything is working.
+To run this script:
+```
+python3 run_script.py config_template.yaml
+```
 
 # cron_script.py
 Use this script to add a cron job that will run on a given interval. To do this use the command:
@@ -21,7 +25,7 @@ crontab -e
 
 This will allow you to edit the cron jobs. Add the following lines to your crontab:
 ```
-*/1 * * * * python3 /home/pi/btu_logger/cron_script.py  >> /home/pi/log_cron_script.txt 2>&1
+*/1 * * * * python3 /home/pi/btu_logger/cron_script.py  /home/pi/btu_logger/config_template.yaml >> /home/pi/log_cron_script.txt 2>&1
 */1 * * * * date >> /home/pi/cron_test.log
 ```
 The output of cron_script.py will be placed in:
