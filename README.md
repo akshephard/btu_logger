@@ -20,15 +20,16 @@ Use this script to add a cron job that will run on a given interval. To do this 
 crontab -e
 
 This will allow you to edit the cron jobs. Add the following lines to your crontab:
-'
+`
 */1 * * * * python3 /home/pi/btu_logger/cron_script.py  >> /home/pi/log_cron_script.txt 2>&1
 */1 * * * * date >> /home/pi/cron_test.log
-'
+`
 The output of cron_script.py will be placed in:
-~/log_cron_script.txt
+`~/log_cron_script.txt`
 
-The second line isn't necessary to run the script but is useful to make sure cron is executing the 
-commands.
+The second line isn't necessary to run the script but is useful to make sure cron is working by
+placing a timestamp in:
+`~/cron_test.log`
 
 
 # Influx_Dataframe_Client.py
