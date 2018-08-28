@@ -25,7 +25,7 @@ while True:
         remote_data = remote_db.read_from_db(time_now=time_now)
         print("length after remote push = ",len(remote_data))
 
-        local_db.delete_from_db(time_now=time_now)
-        local_data2 = local_db.read_from_db(time_now=time_now)
-        print("length after deleting from local = ", len(local_data2))
+        #local_db.delete_from_db(time_now=time_now)
+        #local_data2 = local_db.read_from_db(time_now=time_now)
+        #print("length after deleting from local = ", len(local_data2))
     i+=1
