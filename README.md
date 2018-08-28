@@ -32,8 +32,10 @@ placing a timestamp in:
 ```~/cron_test.log```
 
 You can change the 1 to the interval that you are interested in. Example to run every 15 minutes:
-```*/15 * * * * python3 /home/pi/btu_logger/cron_script.py  >> /home/pi/log_cron_script.txt 2>&1```
-This will run the script at 12:00,12:15,12:30,12:45,1:00...etc 
+```
+*/15 * * * * python3 /home/pi/btu_logger/cron_script.py  >> /home/pi/log_cron_script.txt 2>&1
+```
+This will run the script at 12:00, 12:15, 12:30, 12:45, 1:00...etc 
 
 # Influx_Dataframe_Client.py
 This is a wrapper around the influx python client which supports writing dataframes with specified tags.
