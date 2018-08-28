@@ -2,7 +2,6 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 import os
 import json
-import configparser
 import datetime
 from influxdb import InfluxDBClient
 from Influx_Dataframe_Client import Influx_Dataframe_Client
