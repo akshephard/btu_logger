@@ -5,8 +5,8 @@ import time
 obj = Modbus_Driver('config_template.yaml')
 obj.initialize_modbus()
 
-local_db = Influx_Database_class(config_type="local")
-remote_db = Influx_Database_class(config_type="remote")
+local_db = Influx_Database_class(config_in='config_template.yaml',config_type="local")
+remote_db = Influx_Database_class(config_in='config_template.yaml',config_type="remote")
 
 i=0
 while True:

@@ -20,7 +20,7 @@ class Influx_Database_class(object):
     to another DB/API.
     """
 
-    def __init__(self, config_type="local"):
+    def __init__(self, config_in,config_type="local"):
 
 
         try:
@@ -31,8 +31,8 @@ class Influx_Database_class(object):
                 db_config_name = "remote_database_config"
                 #db_config = Config["remote_database_config"]
 
-
-            self.influx_obj=Influx_Dataframe_Client(config_file="config_template.yaml", db_section=db_config_name)
+            self.influx_obj=Influx_Dataframe_Client(config_file=config_in, db_section=db_config_name)
+            #self.influx_obj=Influx_Dataframe_Client(config_file="config_template.yaml", db_section=db_config_name)
             self.client=self.influx_obj.expose_influx_client()
 
         except Exception as e:
