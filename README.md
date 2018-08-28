@@ -5,7 +5,7 @@ to a local and remote instance of instance of influxDB.
 # setup.sh
 This is a shell script that will install all of the necessary things to make the project run 
 on a fresh Raspberry Pi. After cloning the repo, run the command: 
-'chmod +x setup.sh && ./setup.sh'
+`chmod +x setup.sh && ./setup.sh`
 
 # config_template.yaml 
 Modify this file to correspond to the settings of your modbus device and the local and remote 
