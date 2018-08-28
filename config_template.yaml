@@ -1,7 +1,7 @@
 modbus:
     modbus_type: tcp
     method: rtu
-    port: 502
+    port: 5020
     stopbits: 1
     bytesize: 8
     parity: E

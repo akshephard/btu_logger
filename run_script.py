@@ -21,7 +21,7 @@ while True:
         print("length of data in local db:", len(local_data))
 
         remote_db.push_df_to_db(df=local_data)
-        remote_db.successful_push()
+        local_db.successful_push()
         remote_data = remote_db.read_from_db(time_now=time_now)
         print("length after remote push = ",len(remote_data))
 
