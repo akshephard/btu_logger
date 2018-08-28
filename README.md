@@ -2,16 +2,16 @@
 This project contains a modbus driver and a class to push data pulled from the modbus device
 to a local and remote instance of instance of influxDB. 
 
-# setup.sh
+## setup.sh
 This is a shell script that will install all of the necessary things to make the project run 
 on a fresh Raspberry Pi. After cloning the repo, run the command: 
 ```chmod +x setup.sh && ./setup.sh```
 
-# config_template.yaml 
+## config_template.yaml 
 Modify this file to correspond to the settings of your modbus device and the local and remote 
 instance of influxDB.
 
-# run_script.py
+## run_script.py
 This python script runs a loop that pulls information from the modbus device and puts it into 
 the local database and remote database. Use this file to quickly test if everything is working.
 To run this script:
@@ -19,7 +19,7 @@ To run this script:
 python3 run_script.py config_template.yaml
 ```
 
-# cron_script.py
+## cron_script.py
 Use this script to add a cron job that will run on a given interval. To do this use the command:
 crontab -e
 
@@ -41,10 +41,10 @@ You can change the 1 to the interval that you are interested in. Example to run 
 ```
 This will run the script at 12:00, 12:15, 12:30, 12:45, 1:00...etc 
 
-# Influx_Dataframe_Client.py
+## Influx_Dataframe_Client.py
 This is a wrapper around the influx python client which supports writing dataframes with specified tags.
 
-# local_db.py
+## local_db.py
 Instantiates a connection the local and remote instance of influxDB
 
 
