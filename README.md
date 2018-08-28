@@ -5,7 +5,7 @@ to a local and remote instance of instance of influxDB.
 # setup.sh
 This is a shell script that will install all of the necessary things to make the project run 
 on a fresh Raspberry Pi. After cloning the repo, run the command: 
-chmod +x setup.sh && ./setup.sh
+'chmod +x setup.sh && ./setup.sh'
 
 # config_template.yaml 
 Modify this file to correspond to the settings of your modbus device and the local and remote 
@@ -20,10 +20,10 @@ Use this script to add a cron job that will run on a given interval. To do this 
 crontab -e
 
 This will allow you to edit the cron jobs. Add the following lines to your crontab:
-
+'
 */1 * * * * python3 /home/pi/btu_logger/cron_script.py  >> /home/pi/log_cron_script.txt 2>&1
 */1 * * * * date >> /home/pi/cron_test.log
-
+'
 The output of cron_script.py will be placed in:
 ~/log_cron_script.txt
 
