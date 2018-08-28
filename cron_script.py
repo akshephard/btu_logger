@@ -3,11 +3,12 @@ from modbus_driver import Modbus_Driver
 import time
 #TODO Make this script take a command line argument for config file
 
-obj = Modbus_Driver('config_template.yaml')
+config_file = 'config_template.yaml'
+obj = Modbus_Driver(config_file)
 obj.initialize_modbus()
 
-local_db = Influx_Database_class(config_in='config_template.yaml',config_type="local")
-remote_db = Influx_Database_class(config_in='config_template.yaml',config_type="remote")
+local_db = Influx_Database_class(config_in=config_file, config_type="local")
+remote_db = Influx_Database_class(config_in=config_file, config_type="remote")
 
 
 data = obj.get_data()
