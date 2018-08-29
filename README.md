@@ -49,6 +49,16 @@ This is a wrapper around the influx python client which supports writing datafra
 Instantiates a connection the local and remote instance of influxDB
 
 ## raspberry pi specifics
+While burning an image onto a microSD card it can be useful to enable SSH so that you can do an install
+without a monitor. To do this create a file named `ssh` in the `/boot` directory.
+
+If you have just installed a fresh image onto a Raspberry Pi and are not using a monitor, you can set
+you IP address of your local machine to the same subnet as the autoconfig IP address. This is assuming 
+you are on a network without DHCP.
+
+Use the following command on unix:
+```ifconfig eth0 169.254.250.103 netmask 255.255.0.0``` 
+This will assign the ip address 169.254.250.103 to your machine. 
 
 Default IP address and netmask: ```169.254.250.102 netmask: 255.255.0.0```
 
