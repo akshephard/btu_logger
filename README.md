@@ -60,7 +60,9 @@ Use the following command on unix:
 ```ifconfig eth0 169.254.250.103 netmask 255.255.0.0``` 
 This will assign the ip address 169.254.250.103 to your machine. Now you can connect to your RPI via ssh.
 Use this command to connect:
-```ssh pi@169.254.250.102```
+```
+ssh pi@169.254.250.102
+```
 Default password is `raspberry`
 Default IP address and netmask: ```169.254.250.102 netmask: 255.255.0.0```
 
