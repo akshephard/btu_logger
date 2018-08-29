@@ -53,7 +53,7 @@ Instantiates a connection the local and remote instance of influxDB
 Default IP address is: 169.254.250.102 netmask: 255.255.0.0
 
 ## install hyperpixel screen
-curl https://get.pimoroni.com/hyperpixel | bash
+`curl https://get.pimoroni.com/hyperpixel | bash`
 
 
 
