@@ -20,8 +20,9 @@ python3 run_script.py config_template.yaml
 ```
 
 ## cron_script.py
-Use this script to add a cron job that will run on a given interval. To do this use the command:
-crontab -e
+Use this script as a cron job that will run on a given interval and pull data from your modbus 
+device and push it to the local and remote db. To add a cronjob this use the command:
+`crontab -e`
 
 This will allow you to edit the cron jobs. Add the following lines to your crontab:
 ```
