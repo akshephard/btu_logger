@@ -68,7 +68,7 @@ ssh pi@169.254.250.102
 Default password is `raspberry`
 Default IP address and netmask: ```169.254.250.102 netmask: 255.255.0.0```
 
-## install hyperpixel screen
+### install hyperpixel screen
 `curl https://get.pimoroni.com/hyperpixel | bash`
 
 
