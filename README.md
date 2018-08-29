@@ -56,8 +56,10 @@ If you have just installed a fresh image onto a Raspberry Pi and are not using a
 you IP address of your local machine to the same subnet as the autoconfig IP address. This is assuming 
 you are on a network without DHCP.
 
-Use the following command on unix:
-```ifconfig eth0 169.254.250.103 netmask 255.255.0.0``` 
+Use the following command on unix(may need to use sudo if not root):
+```
+ifconfig eth0 169.254.250.103 netmask 255.255.0.0
+``` 
 This will assign the ip address `169.254.250.103` to your machine. Now you can connect to your RPI via ssh.
 Use this command to connect:
 ```
