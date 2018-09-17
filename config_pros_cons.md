@@ -2,7 +2,8 @@
 
 For frequently used projects that can be reused it is often convenient to have
 a config file. There are a lot of opinions on config files on stack overflow
-github etc.
+github etc. I have switched to using YAML for my python projects for several
+reasons I have described below.
 
 Initially I was using INI files for my projects, however, I found there to be
 some major limitations. I wasn't able to create a dictionary inside of an INI
@@ -30,3 +31,4 @@ comment out a line and get rid of a setting.
 
 I did read of possibly [security issue](https://security.openstack.org/guidelines/dg_avoid-dangerous-input-parsing-libraries.html) with yaml files due to the flexibility of data structures you can 
 create with embedded code. I am using safe_load in all of my projects to mitigate this.
+
