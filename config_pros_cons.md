@@ -28,6 +28,5 @@ commenting out a line. With .ini files I had to have several of different INI fi
 while testing and switch files in the code. I found it more convenient to be able to 
 comment out a line and get rid of a setting.
 
-I did read of possibly security issues with yaml files due to the flexibility
-of data structures you can create. I am using safe_load in all of my projects
-mitigate this.
+I did read of possibly [security issue](https://security.openstack.org/guidelines/dg_avoid-dangerous-input-parsing-libraries.html) with yaml files due to the flexibility of data structures you can 
+create with embedded code. I am using safe_load in all of my projects to mitigate this.
