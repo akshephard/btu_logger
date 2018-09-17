@@ -22,6 +22,8 @@ def main():
     while True:
         data = obj.get_data()
         print(data)
+        time.sleep(1)
+    '''
         local_db.push_json_to_db(data=data)
         time.sleep(1)
 
@@ -40,7 +42,7 @@ def main():
             #print("length after deleting from local = ", len(local_data2))
         i+=1
 
-
+    '''
 
     return
 

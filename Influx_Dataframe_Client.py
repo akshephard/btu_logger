@@ -1,4 +1,3 @@
-#import configparser
 import pandas as pd
 import numpy as np
 from influxdb import InfluxDBClient

@@ -13,7 +13,8 @@ modbus:
     word_order: little
     #registers: {signal_strength:[200,32int],flow_rate:[202,32int],net_total:[204,32int],positive_totalizer:[206,32int],negative_totalizer:[208,32int]}
     #registers: {signal_strength:[200,32int],flow_rate:[202,32int],net_total:[204,32int],positive_totalizer:[206,32int],negative_totalizer:[208,32int],temp1:[210,32int]}
-    registers: {signal_strength:[0,32float],flow_rate:[2,32float],net_total:[4,32float],positive_totalizer:[6,32float],negative_totalizer:[8,32float],temp1:[10,32float]}
+    #registers: {signal_strength:[0,32float],flow_rate:[2,32float],net_total:[4,32float],positive_totalizer:[6,32float],negative_totalizer:[8,32float],temp1:[10,32float]}
+    registers: {signal_strength:[100,32float],temperature:[102,32float],test_count:[104,32int]}
 
 
 local_database_config:
