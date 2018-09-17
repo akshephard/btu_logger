@@ -24,7 +24,7 @@ readable to humans. In this [example code](https://github.com/akshephard/pymodbu
 which I believe to be very helpful in  getting something working quickly. You can 
 have commented out settings inside the file which is common in Unix. The other benefit
 of comments is to quickly be able to change a config file while developing by 
-commenting out a line. With .ini files I had to have several of different INI files
+commenting out a line. With INI files I had to have several of different INI files
 while testing and switch files in the code. I found it more convenient to be able to 
 comment out a line and get rid of a setting.
 
